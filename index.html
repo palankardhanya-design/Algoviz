@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Interactive AlgoSight — master 34 sorting, searching, pathfinding, and problem-solving algorithms through step-by-step visual demonstrations. Built by Jeet Makhija."/>
+<meta name="author" content="Jeet Makhija"/>
+<meta name="theme-color" content="#0c0d12"/>
+<meta name="color-scheme" content="dark light"/>
+<meta property="og:title" content="AlgoSight — Interactive Algorithm Education"/>
+<meta property="og:description" content="Transform abstract algorithms into visual understanding. 34 algorithms with step-by-step execution, race mode, and code snippets."/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="AlgoSight — Interactive Algorithm Education"/>
+<meta name="twitter:description" content="Master sorting, searching & DSA techniques through interactive visualizations."/>
+<title>AlgoSight — Interactive Algorithm Education</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="header-inner">
+      <div class="logo" id="logoLink" style="cursor:default;">Algo<em>Sight</em></div>
+      <div class="header-controls">
+        <button class="sound-toggle" id="soundToggle" title="Toggle sound">
+          <span class="sound-toggle-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></span>
+          <span class="sound-toggle-label">Off</span>
+        </button>
+        <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+          <span class="theme-toggle-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+          <span class="theme-toggle-label">Light</span>
+        </button>
+        <button class="btn btn-ghost btn-tutorial" id="tutorialBtn" title="Guided tutorial"><svg class="ico ico-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></button>
+        <span class="kbd-hint" title="Space=Run/Pause · ←→=Step · R=Reset · S=Shuffle · F=Fullscreen"><svg class="ico ico-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="6" y1="8" x2="6" y2="8"/><line x1="10" y1="8" x2="10" y2="8"/><line x1="14" y1="8" x2="14" y2="8"/><line x1="18" y1="8" x2="18" y2="8"/><line x1="6" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="18" y2="12"/><line x1="8" y1="16" x2="16" y2="16"/></svg> Keys</span>
+        <div class="header-meta">34 Algorithms</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div style="border-bottom:1px solid var(--border);">
+  <div class="wrap" style="padding-top:0;padding-bottom:0;">
+    <nav class="algo-nav">
+      <div class="nav-group">
+        <label class="nav-label" for="sortSelect">Sorting Algorithms</label>
+        <select class="algo-select" id="sortSelect">
+          <option value="">Choose a sort...</option>
+          <option value="bubble">Bubble Sort</option>
+          <option value="selection">Selection Sort</option>
+          <option value="insertion">Insertion Sort</option>
+          <option value="merge">Merge Sort</option>
+          <option value="quick">Quick Sort</option>
+          <option value="counting">Counting Sort</option>
+          <option value="heap">Heap Sort</option>
+          <option value="radix">Radix Sort</option>
+          <option value="shell">Shell Sort</option>
+          <option value="cocktail">Cocktail Shaker Sort</option>
+          <option value="comb">Comb Sort</option>
+          <option value="gnome">Gnome Sort</option>
+          <option value="bucket">Bucket Sort</option>
+          <option value="tim">Tim Sort</option>
+          <option value="pigeonhole">Pigeonhole Sort</option>
+        </select>
+      </div>
+      <div class="algo-divider"></div>
+      <div class="nav-group">
+        <label class="nav-label" for="techniqueSelect">Techniques</label>
+        <select class="algo-select" id="techniqueSelect">
+          <option value="">Choose a technique...</option>
+          <option value="twopointers">Two Pointers</option>
+          <option value="slidingwindow">Sliding Window</option>
+          <option value="kadane">Kadane's Algorithm</option>
+          <option value="prefixsum">Prefix Sum</option>
+          <option value="frequencycounter">Frequency Counter</option>
+          <option value="dutchflag">Dutch National Flag</option>
+          <option value="boyermoore">Boyer-Moore Majority Vote</option>
+          <option value="mergeintervals">Merge Intervals</option>
+          <option value="reservoir">Reservoir Sampling</option>
+        </select>
+      </div>
+      <div class="algo-divider"></div>
+      <div class="nav-group">
+        <label class="nav-label" for="searchSelect">Search Algorithms</label>
+        <select class="algo-select" id="searchSelect">
+          <option value="">Choose a search...</option>
+          <option value="linear">Linear Search</option>
+          <option value="binary">Binary Search</option>
+          <option value="jump">Jump Search</option>
+          <option value="interpolation">Interpolation Search</option>
+          <option value="exponential">Exponential Search</option>
+          <option value="ternary">Ternary Search</option>
+        </select>
+      </div>
+      <div class="algo-divider"></div>
+      <div class="nav-group">
+        <label class="nav-label" for="pathfindSelect">Pathfinding</label>
+        <select class="algo-select" id="pathfindSelect">
+          <option value="">Choose a pathfinder...</option>
+          <option value="bfs">Breadth-First Search</option>
+          <option value="dfs">Depth-First Search</option>
+          <option value="dijkstra">Dijkstra's Algorithm</option>
+          <option value="astar">A* Search</option>
+        </select>
+      </div>
+      <div class="algo-divider"></div>
+      <div class="nav-race-btn-wrap">
+        <button class="btn btn-ghost nav-race-btn" id="raceBtn" title="Race two algorithms"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg> <span class="race-label">Race</span></button>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap full-width-wrap">
+  <div class="body-grid">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-toggle-row">
+        <button class="sidebar-toggle" id="sidebarToggle" title="Hide algorithm panel" aria-expanded="true" aria-controls="sidebarContent">
+          <svg class="ico ico-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+      </div>
+      <div class="sidebar-content" id="sidebarContent">
+      <div>
+        <div class="sidebar-section-label">Algorithm</div>
+        <div class="algo-title-row">
+          <div class="algo-title" id="algoTitle">Bubble Sort</div>
+          <button class="btn btn-ghost btn-learn" id="learnBtn" title="Narration mode (L)"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Learn</button>
+        </div>
+        <div class="algo-tags" id="algoTags"></div>
+        <p class="algo-desc" id="algoDesc"></p>
+      </div>
+      <div>
+        <div class="sidebar-section-label">Complexity</div>
+        <div class="complexity-grid" id="cxGrid"></div>
+      </div>
+      <div>
+        <div class="sidebar-section-label">Controls</div>
+        <div class="ctrl-group" id="sizeCtrl">
+          <div class="ctrl-label">Array Size <span id="sizeVal">10</span></div>
+          <input type="range" id="sizeSlider" min="5" max="60" value="10">
+        </div>
+        <div class="ctrl-group">
+          <div class="ctrl-label">Speed <span id="speedVal">Medium</span></div>
+          <input type="range" id="speedSlider" min="1" max="5" value="3">
+          <div class="speed-keys-hint">
+            <div class="sk"><kbd>1</kbd><span>V.Slow</span></div>
+            <div class="sk"><kbd>2</kbd><span>Slow</span></div>
+            <div class="sk"><kbd>3</kbd><span>Mid</span></div>
+            <div class="sk"><kbd>4</kbd><span>Fast</span></div>
+            <div class="sk"><kbd>5</kbd><span>Max</span></div>
+          </div>
+        </div>
+        <div class="ctrl-group" id="customCtrl">
+          <div class="ctrl-label">Custom Array</div>
+          <input type="text" id="customInput" placeholder="8, 34, 12, 56, 90">
+          <button class="apply-btn" id="applyCustom">Apply</button>
+        </div>
+        <div class="ctrl-group" id="targetCtrl" style="display:none">
+          <div class="ctrl-label">Search Target</div>
+          <input type="number" id="targetInput" placeholder="e.g. 42">
+        </div>
+        <div class="ctrl-group" id="windowCtrl" style="display:none">
+          <div class="ctrl-label">Window Size <span id="windowSizeVal">3</span></div>
+          <input type="range" id="windowSlider" min="2" max="8" value="3">
+        </div>
+        <div class="ctrl-group" id="targetSumCtrl" style="display:none">
+          <div class="ctrl-label">Target Sum</div>
+          <input type="number" id="targetSumInput" placeholder="e.g. 10">
+        </div>
+        <div class="ctrl-group" id="presetCtrl">
+          <div class="ctrl-label">Presets</div>
+          <div class="preset-group">
+            <button class="preset-btn preset-best"  id="presetBest" >Best  <span class="preset-case">(O(n))</span></button>
+            <button class="preset-btn preset-avg"   id="presetAvg"  >Avg   <span class="preset-case">(O(n²))</span></button>
+            <button class="preset-btn preset-worst" id="presetWorst">Worst <span class="preset-case">(O(n²))</span></button>
+            <button class="preset-btn preset-equal" id="presetEqual">Equal <span class="preset-case">(edge)</span></button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sidebar-section-label">Legend</div>
+        <div class="legend-list" id="legendList"></div>
+      </div>
+      </div>
+    </aside>
+
+    <section class="main-panel">
+      <div class="welcome-screen" id="welcomeScreen">
+        <!-- Network graph + particle canvas -->
+        <canvas class="w-canvas" id="wCanvas"></canvas>
+        <div class="welcome-container">
+          <h1 class="w-title">AlgoSight</h1>
+          <p class="w-credit">made by <a href="https://github.com/jeet-43" target="_blank" rel="noopener noreferrer">Jeet</a></p>
+          <p class="w-desc">Interactive, step-by-step visualizations for<br><strong>Sorting</strong> · <strong>Searching</strong> · <strong>Pathfinding</strong> algorithms</p>
+          <button class="w-start-btn" id="startBtn"><span class="w-btn-text">Get Started</span><svg class="w-btn-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="10" x2="16" y2="10"/><polyline points="11 5 16 10 11 15"/></svg></button>
+        </div>
+      </div>
+
+      <div id="vizArea" class="hidden">
+        <!-- Race Modal -->
+        <div class="race-modal hidden" id="raceModal">
+          <div class="race-modal-inner">
+            <div class="race-header">
+              <div class="race-title-group">
+                <span class="race-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
+                <span class="race-title">Algorithm Race</span>
+              </div>
+              <button class="race-close" id="raceClose"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+            </div>
+
+            <div class="race-cat-toggle" id="raceCatToggle">
+              <button class="race-cat-btn active" data-race-cat="sort" id="raceCatSort"><svg class="ico ico-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M6 12h12"/><path d="M9 18h6"/></svg> Sorting</button>
+              <button class="race-cat-btn" data-race-cat="search" id="raceCatSearch"><svg class="ico ico-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Searching</button>
+              <button class="race-cat-btn" data-race-cat="pathfind" id="raceCatPathfind"><svg class="ico ico-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> Pathfinding</button>
+              <div class="race-cat-indicator"></div>
+            </div>
+
+            <div class="race-config" id="raceSortConfig">
+              <div class="race-pick race-pick-a">
+                <div class="race-pick-badge">A</div>
+                <label class="race-label">Algorithm A</label>
+                <select class="algo-select" id="raceAlgoA">
+                  <option value="bubble">Bubble Sort</option>
+                  <option value="selection">Selection Sort</option>
+                  <option value="insertion">Insertion Sort</option>
+                  <option value="merge">Merge Sort</option>
+                  <option value="quick">Quick Sort</option>
+                  <option value="counting">Counting Sort</option>
+                  <option value="heap">Heap Sort</option>
+                  <option value="radix">Radix Sort</option>
+                  <option value="shell">Shell Sort</option>
+                  <option value="cocktail">Cocktail Shaker Sort</option>
+                  <option value="comb">Comb Sort</option>
+                </select>
+              </div>
+              <div class="race-vs-wrap"><span class="race-vs">VS</span></div>
+              <div class="race-pick race-pick-b">
+                <div class="race-pick-badge">B</div>
+                <label class="race-label">Algorithm B</label>
+                <select class="algo-select" id="raceAlgoB">
+                  <option value="bubble">Bubble Sort</option>
+                  <option value="selection" selected>Selection Sort</option>
+                  <option value="insertion">Insertion Sort</option>
+                  <option value="merge">Merge Sort</option>
+                  <option value="quick">Quick Sort</option>
+                  <option value="counting">Counting Sort</option>
+                  <option value="heap">Heap Sort</option>
+                  <option value="radix">Radix Sort</option>
+                  <option value="shell">Shell Sort</option>
+                  <option value="cocktail">Cocktail Shaker Sort</option>
+                  <option value="comb">Comb Sort</option>
+                </select>
+              </div>
+            </div>
+            <div class="race-config hidden" id="racePathfindConfig">
+              <div class="race-pick race-pick-a">
+                <div class="race-pick-badge">A</div>
+                <label class="race-label">Algorithm A</label>
+                <select class="algo-select" id="racePfA">
+                  <option value="bfs">Breadth-First Search</option>
+                  <option value="dfs">Depth-First Search</option>
+                  <option value="dijkstra">Dijkstra's Algorithm</option>
+                  <option value="astar">A* Search</option>
+                </select>
+              </div>
+              <div class="race-vs-wrap"><span class="race-vs">VS</span></div>
+              <div class="race-pick race-pick-b">
+                <div class="race-pick-badge">B</div>
+                <label class="race-label">Algorithm B</label>
+                <select class="algo-select" id="racePfB">
+                  <option value="bfs">Breadth-First Search</option>
+                  <option value="dfs" selected>Depth-First Search</option>
+                  <option value="dijkstra">Dijkstra's Algorithm</option>
+                  <option value="astar">A* Search</option>
+                </select>
+              </div>
+            </div>
+            <div class="race-config hidden" id="raceSearchConfig">
+              <div class="race-pick race-pick-a">
+                <div class="race-pick-badge">A</div>
+                <label class="race-label">Algorithm A</label>
+                <select class="algo-select" id="raceSearchA">
+                  <option value="linear">Linear Search</option>
+                  <option value="binary">Binary Search</option>
+                  <option value="jump">Jump Search</option>
+                </select>
+              </div>
+              <div class="race-vs-wrap"><span class="race-vs">VS</span></div>
+              <div class="race-pick race-pick-b">
+                <div class="race-pick-badge">B</div>
+                <label class="race-label">Algorithm B</label>
+                <select class="algo-select" id="raceSearchB">
+                  <option value="linear">Linear Search</option>
+                  <option value="binary" selected>Binary Search</option>
+                  <option value="jump">Jump Search</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="btn btn-solid race-go" id="raceGo"><svg class="ico ico-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Start Race</button>
+
+            <div class="race-arenas hidden" id="raceArenas">
+              <div class="race-lane race-lane-a">
+                <div class="race-lane-header">
+                  <div class="race-lane-id"><span class="race-lane-badge">A</span><span class="race-lane-name" id="raceLabelA">—</span></div>
+                  <div class="race-lane-stats"><span class="race-lane-stat" id="raceStatA">0 steps</span><span class="race-lane-status" id="raceStatusA">Racing</span></div>
+                </div>
+                <div class="race-progress-track"><div class="race-progress-bar race-progress-a" id="raceProgressA"></div></div>
+                <div class="viz-canvas race-canvas" id="raceCanvasA"></div>
+              </div>
+              <div class="race-lane race-lane-b">
+                <div class="race-lane-header">
+                  <div class="race-lane-id"><span class="race-lane-badge">B</span><span class="race-lane-name" id="raceLabelB">—</span></div>
+                  <div class="race-lane-stats"><span class="race-lane-stat" id="raceStatB">0 steps</span><span class="race-lane-status" id="raceStatusB">Racing</span></div>
+                </div>
+                <div class="race-progress-track"><div class="race-progress-bar race-progress-b" id="raceProgressB"></div></div>
+                <div class="viz-canvas race-canvas" id="raceCanvasB"></div>
+              </div>
+            </div>
+            <div class="race-result hidden" id="raceResult"></div>
+          </div>
+        </div>
+        <canvas id="confettiCanvas"></canvas>
+        <div class="status-line">
+          <div class="status-msg">
+            <div class="status-dot" id="statusDot"></div>
+            <span id="statusText">Press Run to begin</span>
+          </div>
+          <div class="step-info" id="stepInfo">— / —</div>
+        </div>
+        <div class="stats-panel" id="statsPanel">
+          <div class="stat-item"><span class="stat-label">Comparisons</span><span class="stat-val" id="statComparisons">0</span></div>
+          <div class="stat-item"><span class="stat-label">Swaps</span><span class="stat-val" id="statSwaps">0</span></div>
+          <div class="stat-item"><span class="stat-label">Steps</span><span class="stat-val" id="statSteps">0</span></div>
+        </div>
+        <div class="viz-canvas" id="vizCanvas"></div>
+        <div class="narration-bar hidden" id="narrationBar">
+          <div class="narration-icon">💡</div>
+          <div class="narration-content">
+            <span class="narration-text" id="narrationText"></span>
+            <span class="narration-why" id="narrationWhy"></span>
+          </div>
+        </div>
+        <div class="rec-tree-panel hidden" id="recTreePanel">
+          <div class="rec-tree-header">
+            <span class="rec-tree-title">Recursion Tree</span>
+            <button class="rec-tree-collapse" id="recTreeCollapse" title="Collapse">▾</button>
+          </div>
+          <div class="rec-tree-body" id="recTreeBody">
+            <canvas id="recTreeCanvas"></canvas>
+          </div>
+        </div>
+        <div class="timeline-wrap" id="timelineWrap">
+          <input type="range" class="timeline-slider" id="timelineSlider" min="0" max="0" value="0">
+          <div class="timeline-labels"><span id="timelineCurrent">0</span><span id="timelineTotal">0</span></div>
+        </div>
+        <div class="v-resizer" id="vResizer">
+          <div class="v-resizer-line"></div>
+        </div>
+        <div class="code-panel" id="codePanel">
+          <div class="code-panel-header">
+            <span class="code-panel-title" id="codePanelTitle">Pseudocode</span>
+            <div class="lang-tabs" id="langTabs">
+              <button class="lang-tab active" data-lang="pseudo">Pseudo</button>
+              <button class="lang-tab" data-lang="python">Python</button>
+              <button class="lang-tab" data-lang="cpp">C++</button>
+              <button class="lang-tab" data-lang="java">Java</button>
+              <button class="lang-tab" data-lang="js">JS</button>
+            </div>
+          </div>
+          <div class="code-body" id="codeBody"></div>
+        </div>
+        <div class="action-bar">
+          <button class="btn btn-solid"   id="runBtn">Run</button>
+          <button class="btn btn-outline" id="stepBackBtn" disabled>← Back</button>
+          <button class="btn btn-outline" id="stepBtn">Step →</button>
+          <button class="btn btn-outline" id="pauseBtn" disabled>Pause</button>
+          <div class="btn-divider"></div>
+          <button class="btn btn-ghost"   id="resetBtn">Reset</button>
+          <button class="btn btn-ghost"   id="shuffleBtn">Shuffle</button>
+          <button class="btn btn-ghost"   id="fullscreenBtn" title="Fullscreen (F)"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+          <button class="btn btn-ghost"   id="shareBtn" title="Copy shareable URL"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Share</button>
+          <button class="btn btn-ghost"   id="exportGifBtn" title="Export as GIF"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> GIF</button>
+        </div>
+      </div>
+
+      <!-- Pathfinding Panel -->
+      <div id="pathfindArea" class="hidden">
+        <div class="status-line">
+          <div class="status-msg">
+            <div class="status-dot" id="pfStatusDot"></div>
+            <span id="pfStatusText">Draw walls and press Run</span>
+          </div>
+          <div class="step-info" id="pfStepInfo">— / —</div>
+        </div>
+        <div class="pf-toolbar">
+          <button class="btn btn-ghost pf-tool active" id="pfToolWall" title="Draw walls (W)">
+            <svg class="ico ico-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> Wall
+          </button>
+          <button class="btn btn-ghost pf-tool" id="pfToolErase" title="Erase walls (E)">
+            <svg class="ico ico-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Erase
+          </button>
+          <button class="btn btn-ghost pf-tool" id="pfToolWeight" title="Add weight (G)">
+            <svg class="ico ico-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Weight
+          </button>
+          <div class="btn-divider"></div>
+          <button class="btn btn-ghost" id="pfMaze" title="Generate maze">Maze</button>
+          <button class="btn btn-ghost" id="pfClearWalls">Clear Walls</button>
+          <button class="btn btn-ghost" id="pfClearPath">Clear Path</button>
+        </div>
+        <div class="pf-grid-wrap">
+          <div class="pf-grid" id="pfGrid"></div>
+        </div>
+        <div class="pf-legend">
+          <span class="pf-legend-item"><span class="pf-swatch pf-swatch-start"></span>Start</span>
+          <span class="pf-legend-item"><span class="pf-swatch pf-swatch-end"></span>End</span>
+          <span class="pf-legend-item"><span class="pf-swatch pf-swatch-wall"></span>Wall</span>
+          <span class="pf-legend-item"><span class="pf-swatch pf-swatch-weight"></span>Weight</span>
+          <span class="pf-legend-item"><span class="pf-swatch pf-swatch-visited"></span>Visited</span>
+          <span class="pf-legend-item"><span class="pf-swatch pf-swatch-path"></span>Path</span>
+        </div>
+        <div class="action-bar">
+          <button class="btn btn-solid"   id="pfRunBtn">Run</button>
+          <button class="btn btn-outline" id="pfPauseBtn" disabled>Pause</button>
+          <div class="btn-divider"></div>
+          <button class="btn btn-ghost"   id="pfResetBtn">Reset</button>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</div>
+
+<!-- Guided Tutorial Overlay -->
+<div class="tut-overlay hidden" id="tutOverlay">
+  <div class="tut-backdrop" id="tutBackdrop"></div>
+  <div class="tut-tooltip" id="tutTooltip">
+    <div class="tut-step-num" id="tutStepNum">1 / 8</div>
+    <div class="tut-title" id="tutTitle"></div>
+    <div class="tut-body" id="tutBody"></div>
+    <div class="tut-actions">
+      <button class="tut-btn tut-skip" id="tutSkip">Skip</button>
+      <div class="tut-nav">
+        <button class="tut-btn tut-back" id="tutBack">Back</button>
+        <button class="tut-btn tut-next" id="tutNext">Next</button>
+      </div>
+    </div>
+    <div class="tut-dots" id="tutDots"></div>
+  </div>
+</div>
+
+<div class="export-overlay hidden" id="exportOverlay">
+  <div class="export-card">
+    <div class="export-title">Exporting GIF</div>
+    <div class="export-progress-track"><div class="export-progress-bar" id="exportProgressBar"></div></div>
+    <div class="export-status" id="exportStatus">Rendering frames…</div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
